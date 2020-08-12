@@ -9,7 +9,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var adapter: OptionsAdapter
-    private var resIds = ArrayList<Int>()
+    private var resIds = ArrayList<ArrayList<Int>>()
+    private var options = ArrayList<ArrayList<String>>()
     private var itemPositions = ArrayList<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,19 +20,38 @@ class MainActivity : AppCompatActivity() {
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = RecyclerView.VERTICAL
         rv_spinners.layoutManager = linearLayoutManager
-        resIds.add(1)
-        itemPositions.add(0)
-        adapter = OptionsAdapter(this, resIds, itemPositions)
+        adapter = OptionsAdapter(this, options, resIds, itemPositions)
         rv_spinners.adapter = adapter
     }
 
-    fun addItem() {
-        adapter.notifyDataSetChanged()
-        resIds.add(resIds[resIds.size - 1])
+    fun addItem(id: Int) {
+        getRes(id)
         itemPositions.add(0)
+        adapter.notifyDataSetChanged()
     }
 
     fun setOption(index: Int, value: Int) {
         itemPositions[index] = value
+    }
+
+    private fun getOptions(id: Int): ArrayList<String> {
+        val options = arrayListOf("...")
+        val arrOptions = resources.getStringArray(id)
+        options.addAll(arrOptions)
+        return options
+    }
+
+    private fun getRes(id: Int) {
+        val ids = ArrayList<Int>()
+        val arrIds = resources.obtainTypedArray(id)
+        for (i in 0 until arrIds.length()) {
+            if (i == 0) {
+                val optionId = arrIds.getResourceId(i, 0)
+                options.add(getOptions(optionId))
+            }
+            ids.add(arrIds.getResourceId(i, 0))
+        }
+        arrIds.recycle()
+        resIds.add(ids)
     }
 }

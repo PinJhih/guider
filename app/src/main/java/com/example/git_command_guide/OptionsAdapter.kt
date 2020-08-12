@@ -11,7 +11,8 @@ import kotlinx.android.synthetic.main.item_option.view.*
 
 class OptionsAdapter(
     private val context: Context,
-    private val resIds: ArrayList<Int>,
+    private val options: ArrayList<ArrayList<String>>,
+    private val resIds: ArrayList<ArrayList<Int>>,
     private val itemPositions: ArrayList<Int>
 ) : RecyclerView.Adapter<OptionsAdapter.ViewHolder>() {
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v)
@@ -22,19 +23,17 @@ class OptionsAdapter(
         return ViewHolder(v)
     }
 
-    override fun getItemCount() = resIds.size
+    override fun getItemCount() = itemPositions.size
 
     override fun onBindViewHolder(holder: ViewHolder, index: Int) {
-        val spinnerItems = arrayListOf("...", "op1", "op2", "op3")
         val spinnerAdapter =
             ArrayAdapter(
                 context,
                 android.R.layout.simple_spinner_dropdown_item,
-                spinnerItems
+                options[index]
             )
         holder.itemView.spr_option.adapter = spinnerAdapter
         holder.itemView.spr_option.setSelection(itemPositions[index])
-        holder.itemView.spr_option
         holder.itemView.spr_option.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -44,8 +43,8 @@ class OptionsAdapter(
                     parent: AdapterView<*>?, view: View?, position: Int, id: Long
                 ) {
                     if (position != 0 && position != itemPositions[index]) {
-                        (context as MainActivity).addItem()
-                        context.setOption(index, position)
+                        (context as MainActivity).setOption(index, position)
+                        context.addItem(resIds[index][position])
                     }
                 }
             }
