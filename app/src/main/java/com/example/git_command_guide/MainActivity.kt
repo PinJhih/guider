@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         rv_spinners.layoutManager = linearLayoutManager
         adapter = OptionsAdapter(this, options, resIds, itemPositions)
         rv_spinners.adapter = adapter
+        addItem(R.array.g1)
     }
 
     fun addItem(id: Int) {

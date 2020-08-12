@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">git _command_guide</string>
+    <string-array name="test_string_group_1">
+        <item>g1s1</item>
+        <item>g1s2</item>
+        <item>g1s3</item>
+        <item>g1s4</item>
+        <item>g1s5</item>
+    </string-array>
+    <string-array name="test_string_group_2">
+        <item>g2s1</item>
+        <item>g2s2</item>
+        <item>g2s3</item>
+        <item>g2s4</item>
+        <item>g2s5</item>
+    </string-array>
+    <string-array name="test_string_group_3">
+        <item>g3s1</item>
+        <item>g3s2</item>
+        <item>g3s3</item>
+        <item>g3s4</item>
+        <item>g3s5</item>
+    </string-array>
+    <integer-array name="g1">
+        <item>@array/test_string_group_1</item>
+        <item>@array/g2</item>
+        <item>@array/g2</item>
+        <item>@array/g2</item>
+        <item>@array/g2</item>
+        <item>@array/g2</item>
+    </integer-array>
+    <integer-array name="g2">
+        <item>@array/test_string_group_2</item>
+        <item>@array/g3</item>
+        <item>@array/g3</item>
+        <item>@array/g3</item>
+        <item>@array/g3</item>
+        <item>@array/g3</item>
+    </integer-array>
+    <integer-array name="g3">
+        <item>@array/test_string_group_3</item>
+        <item>@array/g1</item>
+        <item>@array/g1</item>
+        <item>@array/g1</item>
+        <item>@array/g1</item>
+        <item>@array/g1</item>
+    </integer-array>
 </resources>
