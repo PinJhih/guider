@@ -32,6 +32,16 @@ class MainActivity : AppCompatActivity() {
         nodes[index].position = value
     }
 
+    fun resetNodes(index: Int) {
+        val list = ArrayList<Node>()
+        for (i in 0..index)
+            list.add(nodes[i])
+        nodes.clear()
+        nodes.addAll(list)
+        nodes[index].position = 0
+        adapter.notifyDataSetChanged()
+    }
+
     private fun getOptions(id: Int): ArrayList<String> {
         val options = arrayListOf("...")
         val arrOptions = resources.getStringArray(id)

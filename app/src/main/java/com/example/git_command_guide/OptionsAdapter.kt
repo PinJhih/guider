@@ -40,9 +40,14 @@ class OptionsAdapter(
                 override fun onItemSelected(
                     parent: AdapterView<*>?, view: View?, position: Int, id: Long
                 ) {
-                    if (position != nodes[index].position && position != 0) {
-                        (context as MainActivity).setPosition(index, position)
-                        context.addItem(nodes[index].nextId[position])
+                    if (position != nodes[index].position) {
+                        if (index + 1 == nodes.size) {
+                            (context as MainActivity).setPosition(index, position)
+                            context.addItem(nodes[index].nextId[position])
+                        } else {
+                            (context as MainActivity).setPosition(index, position)
+                            context.resetNodes(index + 1)
+                        }
                     }
                 }
             }
