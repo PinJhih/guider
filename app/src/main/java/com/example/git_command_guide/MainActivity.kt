@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var adapter: OptionsAdapter
     private var nodes = ArrayList<Node>()
 
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
     }
 
-    fun setOption(index: Int, value: Int) {
+    fun setPosition(index: Int, value: Int) {
         nodes[index].position = value
     }
 

@@ -41,7 +41,7 @@ class OptionsAdapter(
                     parent: AdapterView<*>?, view: View?, position: Int, id: Long
                 ) {
                     if (position != nodes[index].position && position != 0) {
-                        (context as MainActivity).setOption(index, position)
+                        (context as MainActivity).setPosition(index, position)
                         context.addItem(nodes[index].nextId[position])
                     }
                 }
