@@ -4,15 +4,12 @@
         <item>g1s1</item>
         <item>g1s2</item>
         <item>g1s3</item>
-        <item>g1s4</item>
-        <item>g1s5</item>
     </string-array>
     <string-array name="test_string_group_2">
         <item>g2s1</item>
         <item>g2s2</item>
         <item>g2s3</item>
         <item>g2s4</item>
-        <item>g2s5</item>
     </string-array>
     <string-array name="test_string_group_3">
         <item>g3s1</item>
@@ -21,28 +18,39 @@
         <item>g3s4</item>
         <item>g3s5</item>
     </string-array>
+    <string-array name="test_string_group_4">
+        <item>g4s1</item>
+        <item>g4s2</item>
+    </string-array>
     <integer-array name="g1">
         <item>@array/test_string_group_1</item>
         <item>@array/g2</item>
         <item>@array/g2</item>
-        <item>@array/g2</item>
-        <item>@array/g2</item>
-        <item>@array/g2</item>
+        <item>@array/g3</item>
     </integer-array>
     <integer-array name="g2">
         <item>@array/test_string_group_2</item>
         <item>@array/g3</item>
-        <item>@array/g3</item>
-        <item>@array/g3</item>
+        <item>@string/command_1</item>
         <item>@array/g3</item>
         <item>@array/g3</item>
     </integer-array>
     <integer-array name="g3">
         <item>@array/test_string_group_3</item>
+        <item>@array/g4</item>
+        <item>@array/g2</item>
         <item>@array/g1</item>
-        <item>@array/g1</item>
-        <item>@array/g1</item>
-        <item>@array/g1</item>
-        <item>@array/g1</item>
+        <item>@string/command_4</item>
+        <item>@string/command_5</item>
     </integer-array>
+    <integer-array name="g4">
+        <item>@array/test_string_group_4</item>
+        <item>@string/command_2</item>
+        <item>@string/command_3</item>
+    </integer-array>
+    <string name="command_1">git 1</string>
+    <string name="command_2">git 2</string>
+    <string name="command_3">git 3</string>
+    <string name="command_4">git 4</string>
+    <string name="command_5">git 5</string>
 </resources>
