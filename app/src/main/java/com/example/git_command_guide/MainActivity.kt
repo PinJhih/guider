@@ -24,8 +24,10 @@ class MainActivity : AppCompatActivity() {
 
     fun addItem(id: Int) {
         val node = getRes(id)
-        nodes.add(node)
-        adapter.notifyDataSetChanged()
+        if (node.options.size != 0) {
+            nodes.add(node)
+            adapter.notifyDataSetChanged()
+        }
     }
 
     fun setPosition(index: Int, value: Int) {
@@ -52,14 +54,22 @@ class MainActivity : AppCompatActivity() {
     private fun getRes(id: Int): Node {
         val n = Node()
         val ids = ArrayList<Int>()
-        val arrIds = resources.obtainTypedArray(id)
-        for (i in 0 until arrIds.length()) {
-            if (i == 0)
-                n.options = getOptions(arrIds.getResourceId(i, 0))
-            ids.add(arrIds.getResourceId(i, 0))
+        try {
+            val arrIds = resources.obtainTypedArray(id)
+            for (i in 0 until arrIds.length()) {
+                if (i == 0)
+                    n.options = getOptions(arrIds.getResourceId(i, 0))
+                ids.add(arrIds.getResourceId(i, 0))
+            }
+            n.nextId = ids
+            arrIds.recycle()
+        } catch (e: Exception) {
+            setText(id)
         }
-        n.nextId = ids
-        arrIds.recycle()
         return n
+    }
+
+    private fun setText(id: Int) {
+        tv_command.text = resources.getString(id)
     }
 }
