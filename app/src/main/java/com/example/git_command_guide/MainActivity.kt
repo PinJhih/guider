@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         if (node.options.size != 0) {
             nodes.add(node)
             adapter.notifyDataSetChanged()
+            tv_command.text = "..."
         }
     }
 
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         nodes.addAll(list)
         nodes[index].position = 0
         adapter.notifyDataSetChanged()
+        tv_command.text = "..."
     }
 
     private fun getOptions(id: Int): ArrayList<String> {
@@ -56,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         val ids = ArrayList<Int>()
         try {
             val arrIds = resources.obtainTypedArray(id)
-            for (i in 0 until arrIds.length()) {
+            for (i in 0 until arrIds.length()) {    
                 if (i == 0)
                     n.options = getOptions(arrIds.getResourceId(i, 0))
                 ids.add(arrIds.getResourceId(i, 0))
