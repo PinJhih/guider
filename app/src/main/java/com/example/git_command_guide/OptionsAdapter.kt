@@ -46,7 +46,10 @@ class OptionsAdapter(
                             context.addItem(nodes[index].nextId[position])
                         } else {
                             (context as MainActivity).setPosition(index, position)
-                            context.resetNodes(index + 1)
+                            if (nodes[index].position == 0)
+                                context.resetNodes(index)
+                            else
+                                context.resetNodes(index + 1)
                         }
                     }
                 }
