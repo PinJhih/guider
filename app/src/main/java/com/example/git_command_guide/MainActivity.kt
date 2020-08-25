@@ -37,13 +37,13 @@ class MainActivity : AppCompatActivity() {
 
     fun resetNodes(index: Int) {
         val list = ArrayList<Node>()
-        for (i in 0..index)
+        for (i in 0 until index)
             list.add(nodes[i])
         nodes.clear()
         nodes.addAll(list)
-        nodes[index].position = 0
+        val position = list[index - 1].position
+        addItem(list[index - 1].nextId[position])
         adapter.notifyDataSetChanged()
-        tv_command.text = "..."
     }
 
     private fun getOptions(id: Int): ArrayList<String> {
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         val ids = ArrayList<Int>()
         try {
             val arrIds = resources.obtainTypedArray(id)
-            for (i in 0 until arrIds.length()) {    
+            for (i in 0 until arrIds.length()) {
                 if (i == 0)
                     n.options = getOptions(arrIds.getResourceId(i, 0))
                 ids.add(arrIds.getResourceId(i, 0))
