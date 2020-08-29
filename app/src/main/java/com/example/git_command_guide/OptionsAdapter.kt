@@ -43,13 +43,13 @@ class OptionsAdapter(
                     if (position != nodes[index].position) {
                         if (index + 1 == nodes.size) {
                             (context as MainActivity).setPosition(index, position)
-                            context.addItem(nodes[index].nextId[position])
+                            if (position == 0)
+                                context.setText(null)
+                            else
+                                context.addItem(nodes[index].nextId[position])
                         } else {
                             (context as MainActivity).setPosition(index, position)
-                            if (nodes[index].position == 0)
-                                context.resetNodes(index)
-                            else
-                                context.resetNodes(index + 1)
+                            context.resetNodes(index + 1)
                         }
                     }
                 }

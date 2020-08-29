@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         if (node.options.size != 0) {
             nodes.add(node)
             adapter.notifyDataSetChanged()
-            tv_command.text = "..."
+            setText(null)
         }
     }
 
@@ -42,7 +42,10 @@ class MainActivity : AppCompatActivity() {
         nodes.clear()
         nodes.addAll(list)
         val position = list[index - 1].position
-        addItem(list[index - 1].nextId[position])
+        if (position == 0)
+            setText(null)
+        else
+            addItem(list[index - 1].nextId[position])
         adapter.notifyDataSetChanged()
     }
 
@@ -71,7 +74,10 @@ class MainActivity : AppCompatActivity() {
         return n
     }
 
-    private fun setText(id: Int) {
-        tv_command.text = resources.getString(id)
+    fun setText(id: Int?) {
+        if(id==null)
+            tv_command.text = "..."
+        else
+            tv_command.text = resources.getString(id)
     }
 }
